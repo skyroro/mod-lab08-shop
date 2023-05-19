@@ -50,6 +50,7 @@ class Shop
         void WorkSup(int id, Client client, double speed);//имитация раоты кассы
         void Work();
         void Statistics();
+        void Print();
 
         //Статистика
         std::chrono::system_clock::time_point allTimeStart;
