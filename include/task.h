@@ -8,6 +8,7 @@
 #include <string>
 #include <mutex>
 #include <future>
+#include <cmath>
 
 class Client
 {
