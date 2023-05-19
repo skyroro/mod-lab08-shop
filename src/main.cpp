@@ -18,4 +18,5 @@ int main()
     Shop shop(numberRegisters, intensity, speed, avgProducts, maxQueue);
     shop.Work();
     shop.Statistics();
+    shop.Print();
 }
