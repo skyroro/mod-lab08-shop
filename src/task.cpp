@@ -126,34 +126,15 @@ void Shop::Statistics() {
     avgCassaWorkTime = avgCassaWorkTime / numberRegisters;
     avgCassaDownTime = avgCassaDownTime / numberRegisters;
 
-    std::cout << "Customers served: " << servedСustomers << std::endl;
-    std::cout << "No customers served: " << unservedCustomers << std::endl << std::endl;
-    
-    std::cout << "Average queue length: " << avgQueue << std::endl;
-    std::cout << "Average time spent by a customer in a queue: " << avgClientQueueTime << std::endl;
-    std::cout << "Average time spent by a customer at the checkout: " << (int)avgClientCheckoutTime << std::endl << std::endl;
-    
-    std::cout << "Average opening time of the cash register: " << avgCassaWorkTime << std::endl;
-    std::cout << "Average downtime of the cash register: " << avgCassaDownTime << std::endl << std::endl;
-
     //На основании накопленной статистики подсчитать:
     double la = numberRequests / allTime;//интесивность входного потока заявок
     double mu = (double)servedСustomers / allTime;//интесивность потока обслуживания
     double p = la / mu;//интенсивность нагрузки канала.
 
-    std::cout << "All Time: " << allTime << std::endl;
-    std::cout << "la: " << la << std::endl;
-    std::cout << "mu: " << mu << std::endl;
-    std::cout << "p: " << p << std::endl << std::endl;
-
     //практические
     double P = unservedCustomers / numberRequests;//вероятность отказа
     double Q = 1.0 - P;//относительную пропускную способность
     double A = la * Q;//абсолютную пропускную способность
-
-    std::cout << "Pp: " << P << std::endl;
-    std::cout << "Qp: " << Q << std::endl;
-    std::cout << "Ap: " << A << std::endl << std::endl;
 
     pFailureProbability = P;//вероятность отказа
     pRelativeStoreThroughput = Q;//относительную пропускную способность магазина
@@ -173,12 +154,27 @@ void Shop::Statistics() {
     Q = 1.0 - P;
     A = la * Q;
 
-    //std::cout << "P0: " << P0 << std::endl;
-    std::cout << "Pt: " << P << std::endl;
-    std::cout << "Qt: " << Q << std::endl;
-    std::cout << "At: " << A << std::endl << std::endl;
-
     tFailureProbability = P;
     tRelativeStoreThroughput = Q;
     tAbsoluteStoreThroughput = A;
+}
+
+void Shop::Print() {
+    std::cout << "Customers served: " << servedСustomers << std::endl;
+    std::cout << "No customers served: " << unservedCustomers << std::endl << std::endl;
+
+    std::cout << "Average queue length: " << avgQueue << std::endl;
+    std::cout << "Average time spent by a customer in a queue: " << avgClientQueueTime << std::endl;
+    std::cout << "Average time spent by a customer at the checkout: " << (int)avgClientCheckoutTime << std::endl << std::endl;
+
+    std::cout << "Average opening time of the cash register: " << avgCassaWorkTime << std::endl;
+    std::cout << "Average downtime of the cash register: " << avgCassaDownTime << std::endl << std::endl;
+
+    std::cout << "Pp: " << pFailureProbability << std::endl;
+    std::cout << "Qp: " << pRelativeStoreThroughput << std::endl;
+    std::cout << "Ap: " << pAbsoluteStoreThroughput << std::endl << std::endl;
+
+    std::cout << "Pt: " << tFailureProbability << std::endl;
+    std::cout << "Qt: " << tRelativeStoreThroughput << std::endl;
+    std::cout << "At: " << tAbsoluteStoreThroughput << std::endl << std::endl;
 }
